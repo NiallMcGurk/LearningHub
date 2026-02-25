@@ -1,14 +1,33 @@
-﻿
-
-namespace LearningHub.SOLID.OpenClosedPrinciple
+﻿namespace LearningHub.SOLID.OpenClosedPrinciple
 {
-    public class Service
+    public class Service : IService
     {
-        public int DontModifyMe(int number)
-        {
-            Console.WriteLine("Hello please do not modify me I am old.");
+        public readonly IService _service;
 
-            return number + 2;
+        public Service(IService service)
+        {
+            this._service = service;
+        }
+
+        public void PrintToConsoleExample()
+        {
+            Console.WriteLine("Hello from Service class");
+        }
+
+        public int DoSomething(int value)
+        {
+            // Decorator pattern - before or after the existing code
+
+            // implement the existing interface
+
+            // Calls new method without 
+
+            // needs more study
+            int newValue = this._service.DoSomething(value);
+
+            Console.WriteLine($"The value from the service is {newValue}");
+
+            return newValue;
         }
     }
 }

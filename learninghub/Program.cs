@@ -1,4 +1,5 @@
 ﻿using LearningHub.SOLID.GoodExample;
+using LiskovExample;
 
 namespace LearningHub
 {
@@ -6,8 +7,10 @@ namespace LearningHub
     {
         public static void Main(string[] args)
         {
-            new SingleResponsibilityPrincipleProgram();
-            new InterfaceProgram();
+            // new SingleResponsibilityPrincipleProgram();
+            // new InterfaceProgram();
+            // Birds birds = new Birds();
+            // birds.Run();
         }
     }
 }

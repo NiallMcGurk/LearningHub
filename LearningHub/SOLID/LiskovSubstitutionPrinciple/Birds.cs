@@ -1,92 +1,109 @@
 namespace LiskovExample
 {
-    public class Bird
+    // Interface Segregation Principle: Separate fly behavior from basic bird behavior
+    public interface IBird
     {
-        public string Name { get; }
-        public bool CanFly { get; }
+        string Name { get; }
+        void Feathers();
+    }
 
-        public Bird(string name, bool canFly)
-        {
-            this.Name = name;
-            this.CanFly = canFly;
-        }
-        
+    public interface IFlyingBird : IBird
+    {
+        void Fly();
+    }
+
+
+    // Single Responsibility Principle: Each class has one clear responsibility
+    public class Pigeon : IFlyingBird
+    {
+        public string Name => "Pigeon";
+
         public void Feathers()
         {
             Console.WriteLine($"{Name} - I have feathers.");
         }
 
-        public void CanTheBirdFly()
+        public void Fly()
         {
-            if (CanFly)
+            Console.WriteLine($"{Name} - I am flying.");
+        }
+    }
+
+    public class Sparrow : IFlyingBird
+    {
+        public string Name => "Sparrow";
+
+        public void Feathers()
+        {
+            Console.WriteLine($"{Name} - I have feathers.");
+        }
+
+        public void Fly()
+        {
+            Console.WriteLine($"{Name} - I am flying.");
+        }
+    }
+
+    public class Ostrich : IBird
+    {
+        public string Name => "Ostrich";
+
+        public void Feathers()
+        {
+            Console.WriteLine($"{Name} - I have feathers.");
+        }
+    }
+
+    public class Penguin : IBird
+    {
+        public string Name => "Penguin";
+
+        public void Feathers()
+        {
+            Console.WriteLine($"{Name} - I have feathers.");
+        }
+    }
+
+    // Dependency Inversion Principle: depend on abstractions, not concrete classes
+    public class CreateBird
+    {
+        public void BirdInfo(IBird bird)
+        {
+            bird.Feathers();
+
+            if (bird is IFlyingBird flyingBird)
             {
-                Console.WriteLine($"{Name} - I am flying.");
+                flyingBird.Fly();
             }
             else
             {
-                Console.WriteLine($"{Name} - I cannot fly.");
+                Console.WriteLine($"{bird.Name} - I cannot fly.");
             }
         }
-    }
-
-    public class NonFlyingBirds : Bird
-    {
-        public NonFlyingBirds(string name) : base(name, false)
-        {
-        }
-    }
-
-    public class FlyingBird : Bird
-    {
-        public FlyingBird(string name) : base(name, true)
-        {
-        }
-    }
-
-    public class Pidgeon : FlyingBird
-    {
-        public Pidgeon() : base("Pidgeon") { }
-    }
-
-    public class Ostrich : NonFlyingBirds
-    {
-        public Ostrich() : base("Ostrich") { }
-    }
-
-    public class Penguin : NonFlyingBirds
-    {
-        public Penguin() : base("Penguin") { }  
-    }
-
-    public class Sparrow : FlyingBird
-    {
-        public Sparrow() : base("Sparrow") { }
     }
 
     public class Birds
     {
         public void Run()
         {
-            Penguin penguin = new Penguin();
-            penguin.Feathers();
-            penguin.CanTheBirdFly();
+            // This is the liskov substitution principle in action -
+            // we can substitute any bird for the base interface -
+            // it will work correctly without needing to know the specific type of bird
+            var birds = new IBird[]
+            {
+                new Penguin(),
+                new Ostrich(),
+                new Pigeon(),
+                new Sparrow()
+            };
 
-            Ostrich ostrich = new Ostrich();
-            ostrich.Feathers();
-            ostrich.CanTheBirdFly();
+            CreateBird createBird = new CreateBird();
 
-            Pidgeon pidgeon = new Pidgeon();
-            pidgeon.Feathers();
-            pidgeon.CanTheBirdFly();
-
-            Sparrow sparrow = new Sparrow();
-            sparrow.Feathers();
-            sparrow.CanTheBirdFly();
-
-            // Example of a base class being substituted by the sub class (if required)
-            Bird bird = new Bird("Sparrow", true);
-            bird.Feathers();
-            bird.CanTheBirdFly();
+            foreach (var bird in birds)
+            {
+                createBird.BirdInfo(bird);
+                Console.WriteLine();
+            }
         }
     }
 }

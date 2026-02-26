@@ -7,11 +7,11 @@ namespace LearningHub.SOLID.SingleResponsibilityPrinciple.GoodExample
     {
         private readonly StudentRepository _studentRepository;
         private readonly EnrollmentService _enrollmentService;
-        private readonly EmailService _emailService;
+        private readonly EmailStudentService _emailService;
         public StudentApplicationService(
             StudentRepository studentRepository,
             EnrollmentService enrollmentService,
-            EmailService emailService)
+            EmailStudentService emailService)
         {
             _studentRepository = studentRepository;
             _enrollmentService = enrollmentService;

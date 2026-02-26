@@ -19,7 +19,7 @@ namespace LearningHub.SOLID.SingleResponsibilityPrinciple.GoodExample
             StudentApplicationService studentApplicationService = new StudentApplicationService(
                 new StudentRepository(),
                 new EnrollmentService(),
-                new EmailService()
+                new EmailStudentService()
                 );
 
             // Look inside Register Student for best example of SRP.

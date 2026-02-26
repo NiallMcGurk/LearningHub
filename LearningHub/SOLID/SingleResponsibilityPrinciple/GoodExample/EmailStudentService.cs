@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LearningHub.SOLID.GoodExample
 {
-    public class EmailService
+    public class EmailStudentService
     {
         // SRP = Sending Email to Student
         public void SendEmail(Student student)

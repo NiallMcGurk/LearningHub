@@ -1,7 +1,7 @@
 // Single Responsibility Principle (SRP).
 
 // Bad example
-public class Student
+public class BadSingleResponsibilityPrinciple
 {
     public int StrudentId { get; set; }
     public string FirstName { get; set; }

@@ -8,9 +8,10 @@ namespace LearningHub.SOLID.GoodExample
 {
     public class EnrollmentService
     {
-        public void Enroll(Student student, string course)
+        // SRP = Enrolling Student in Course
+        public void Enroll(Student student)
         {
-            Console.WriteLine(student.FirstName + " " + student.LastName + " has been enrolled in " + course);
+            Console.WriteLine(student.FirstName + " " + student.LastName + " Math 101.");
         }
     }
 }

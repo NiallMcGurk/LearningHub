@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LearningHub.SOLID.GoodExample
+﻿namespace LearningHub.SOLID.GoodExample
 {
+    // SRP = Defining Student Entity
     public class Student
     {
         public int StudentId { get; set; }

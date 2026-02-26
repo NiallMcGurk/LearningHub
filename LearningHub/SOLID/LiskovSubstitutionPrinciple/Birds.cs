@@ -1,8 +1,5 @@
-using System;
-
 namespace LiskovExample
 {
-    // THE SUB CLASS SHOULD BE ABLE TO BE SUBSTITUTED BY THE BASE CLASS!
     public class Bird
     {
         public string Name { get; }
@@ -16,14 +13,14 @@ namespace LiskovExample
         
         public void Feathers()
         {
-            Console.WriteLine($"{Name} - I have feathers");
+            Console.WriteLine($"{Name} - I have feathers.");
         }
 
         public void CanTheBirdFly()
         {
             if (CanFly)
             {
-                Console.WriteLine($"{Name} - I am flying bro.");
+                Console.WriteLine($"{Name} - I am flying.");
             }
             else
             {

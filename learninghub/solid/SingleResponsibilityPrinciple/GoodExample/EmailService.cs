@@ -8,9 +8,10 @@ namespace LearningHub.SOLID.GoodExample
 {
     public class EmailService
     {
-        public void SendEmail(Student student, string body)
+        // SRP = Sending Email to Student
+        public void SendEmail(Student student)
         {
-            Console.WriteLine("Email sent to " + student.Email + " with body: \n" + body);
+            Console.WriteLine("Email sent to " + student.Email + " with body: \n" + student.FirstName + ", " + "You have been enrolled in Math 101");
         }
     }
 }
